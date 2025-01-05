@@ -38,3 +38,29 @@ console.log(myObj, typeof myObj);    // object => object
 console.log(myFunction(), typeof myFunction); // Function => function    // Object Function
 
 // JavaScript is Dynamically typed language as datatypes are not mentioned during declaring they are defined at runtime.
+
+
+// ***********************************************************************************
+
+// memory for datatypes
+
+// Stack {Primitive},            Heap {Non-Primitive}
+
+// Primitive datatype [stack] => copy of values is given {original is not updated}
+let name = "om"
+let anothername = name;
+anothername = "raj"
+
+console.log(anothername) // raj
+console.log(name) // om
+
+//Non-Primitive datatype [Heap] => refrence of original value is given {original is updated}
+
+let userOne = {
+    name : "om"
+}
+let userTwo = userOne
+userTwo.name = "raj"
+
+console.log(userOne.name) // raj
+console.log(userTwo.name) // raj
