@@ -41,3 +41,25 @@ console.log(Object.entries(objSpread)) // Returns array of key and value pair
 
 
 console.log(objSpread.hasOwnProperty("3")) // will check for the key is present in object or not returns true if present
+
+
+// ----- Destructuring of Objects ------
+
+const course = {
+    courseName : "JavaScript",
+    startDate : "2025-01-06",
+    courseInstructor : "Om"
+}
+
+console.log(course.courseInstructor);
+console.log(course.courseName);
+console.log(course.startDate);
+
+console.log("")
+// Everytime we have to write the object name
+
+const {courseInstructor : ci} = course;
+console.log(ci);
+
+const {courseName} = course;
+console.log(courseName);
