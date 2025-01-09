@@ -1,0 +1,376 @@
+1. JavaScript Execution Context
+
+2. JavaScript code is converted into global Execution context and this variable is used to refer this global execution context
+Browser has window object as this (Execution Conext)
+
+Global Execution Context
+Functional Execution Context
+
+3. JavaScript is single threaded 
+
+4. Steps in JavaScript program execution (2 cycle)
+Ans => Memory creation phase : variable Memory is allocated no execution is performed also values are not set ; its undefined in this stage ; function are store with declaration 
+   Execution phase : variables are given values 
+
+    for each function new variable environment / execution context + execution thread
+    and for that function again 2 cycles are performed (Memory creation , and execution phase)
+
+    after function execution the execution context is deleted
+
+5. call stack is used to track the execution of program (LIFO stack)  sequence in which functions as called and executed
+
+6. Difference between let, const, variable
+Ans =>  1. let : Cannot be redeclare, but values of let can be updated. It is block-scope 
+        2. const : Cannot be redeclared as well as reassigned (value cannot be updated). It is block-scope
+        3. var : It can be redeclared as well as it can be updated. It is global-scope.
+
+        NOTE => If we do not assign any value it will remain undefined until it gets any value.
+
+7. Difference between null and undefined valyes ?
+Ans =>  1. null : no value / empty value is assign to variable. Eg.. Temp set to null if not known rather than 0 which is error assignment
+        2. undefined : the value is not defined yet / not yet known. 
+
+8. Types of Datatypes.
+Ans => There are 2 types of Datatypes : Primitive and Non Primitive Datatype
+
+    1. Primitive Datatype : [number, string, boolean, null, undefined, symbol, bigInt] { 7 types } [Stack]
+    --- Primitive Datatype are call by value types : copy of the value is sent 
+        Original value is not updated.
+
+    2. Non-Primitive Datatype : [Array, Object, Functions] [Heap]
+    --- Non-Primitive Datatype are call be refrence type : refrence address of original is sent.
+        Original value is updated as refrence of original value is given
+
+    Primitives are store in stack while Non-Primitive are store in Heap Memory.
+
+    JavaScript is Dynamically types language i.e. Datatype is defined at the time of execution [runtime]
+
+9. Datatype Conversion 
+    String -> Number    "99" -> 99       "99a" -> NaN       Syntax : let num = Number(String)
+    Number -> Boolean   "1" -> true     "0" -> false        Syntax : let bool = Boolean(number)
+    String -> Boolean   "a" -> true    "" -> false       "false" -> true
+
+10. Important Operations !!
+
+    "3" + 2 => 32
+    3 + "2" => 32
+    "3" + 2 + 2 => 322
+    2 + 2 + "3" => 43     // If from starting two consicative numbers are there then it will not convert it to string and will treat it as number
+
+    +true => 1
+    +"" => 0
+
+11. Comparition Operator   {>=, > , < , <=} will convert strings to number first then compare
+    "2" > 1    -> true
+    null > 0   -> false
+    null == 0  -> false // == Operator will not convert null to number
+    null <= 0  -> true 
+
+
+    "0" == 0   -> true
+    "0" === 0  -> false  // === is use to strictly check  [it will check the Datatype as well]
+
+12. Difference between Slice and Splice method
+// NOTE => not only difference of 2nd parameter is exclusive and inclusive but,
+// => slice will not update original array [exclusive]
+// => Splice will update the original array [inclusive]
+
+13. Arrays in JavaScript
+    - JavaScript arrays are resizeable
+    - array methods =>  push(), pop(), 
+                        unshift() -> insert from front , 
+                        shift() -> delete from front ,
+                        includes() -> returns true if element is present in array
+                        indexOf() -> gives index of specified number
+                        join() -> convert array into string 
+                        slice() -> create sub array from an array [inclusive,exclusive]
+                        Splice() -> create sub array by removing element from array [inclusive,inclusive] {update original array}
+
+                        concat() -> will create new array by merging two arrays
+                        spread Operator -> newArray = [...oldarr, ...aldarr2] -> will spread array element into individual strings
+                        flat() -> flat(infinity) -> will flat the inner array in arry to element
+                        eg. [1,2,3,[4,5,6],[7,8,[9,10]]] => flat(infinity) => [1,2,3,4,5,6,7,8,9,10]
+
+                        // isArray => checks if is an array
+                        // from => creates array from value
+                        // of => creates array of elements/variables given 
+
+14. How to give symbol in objects
+Ans =>      while givining the key include it in square bracket      [mysym] : 1233455
+
+15. How to make JS objects immutable 
+Ans => Use freeze() method so that objects cannot be updated   obj.freeze()
+
+16. Methods in declarating object 
+Ans =>  // literals => no Singleton const user = {}
+        // Constructor => Singleton user.create()
+
+17. How to merge two or more objects
+Ans => use assign() method. Will combine properties of two or more objects into a new object . returns a new object
+
+    Syntax : cosnt newObj = assign(obj1,obj2,obj3)
+    Syntax : cosnt newObj = assign({}, obj1,obj2,obj3)   {} => guarantee object creation
+
+
+18. Spread operator for objects
+Ans.   The spread operator will create a array of keys and values 
+
+        Example: 
+        const objSpread = {...obj1,...obj2,...obj3,...obj2}
+        console.log(objSpread)
+
+        // Returns an array of keys and values
+        console.log(Object.keys(objSpread))
+        // [ '1', '2', '3', '4' ]
+
+        console.log(Object.values(objSpread))
+        // [ 'a', 'b', 'c', 'd' ]
+
+console.log(Object.entries(objSpread)) // Returns array of key and value pair
+// [ [ '1', 'a' ], [ '2', 'b' ], [ '3', 'c' ], [ '4', 'd' ] ]
+
+19. What happens when we dont pass an argument where parameter is expected by the function
+Ans => the function will take undefined as value
+
+    // Will give default value if value not given through argument it will use default value
+    function userLoginMsg1(username = "sam") {
+        return `${username} logged in successfully...`
+    }
+
+
+20. Rest operator for functions
+
+    // ******** REST OPERATOR ******** {...}
+    // if we dont know how much arguments will be inputed so we use rest operator ...
+    // the rest operator will collect all arguments into an array 
+    function addCartValue(...price) {
+        return price
+    }
+
+    console.log(addCartValue(200,300,560,140));  // [ 200, 300, 560, 140 ]
+
+    // function addCartValue(val1, val2, ...price) {
+    //     return price
+    // } 
+    // first 2 values will be in val1 and val2 and rest values will be stored in the price 
+
+21. All about JavaScript Function
+    /*
+    Functions =>
+        1. Values passed to functions are called as arguments 
+        2. function parameters are placeholders for values that a function can accept when it is called. parameters are declared in parentheses
+        3. If arguments are not given to a function it will be taken as undefined 
+        4. We can set default values to the parameter, when argument is not passed it will use default value instead to undefined function age(val = 12){}
+        5. Function terminated when return keyword is reached 
+        6. REST Operator (...values) => is used when we dont know how many argumnents will be passed, will collect values into an array 
+        7. Eg.. (val1,val2,...values) => [12,13,14,15,16] => val1=12, val2=13, values=[14,15,16] 
+        8. Can pass objects as well as arrays as an argument 
+    */
+
+22. Hoisting in Function 
+Ans =>
+    If function is declared and store in variable we cannot use it before declaration
+    but if function is directly declared we can use it before declaration
+
+    // --------------- FUNCTIONS ----------------- {HOISTING}
+    // Two different types of function declaration 
+
+    // This type of function can be access before function declaration
+    console.log(addOne(5)) // 6
+    function addOne(num){
+        return ++num;
+    }
+
+    // will give error if used before declaration
+    // console.log(addTwo(5)) // ReferenceError: Cannot access 'addTwo' before initialization
+    const addTwo = function (num) {
+        return num+=2
+    }
+    console.log(addTwo(5)); // 7
+
+22. Arrow Function in JS
+Ans => 
+    // Implicit return  => single line function, no need to use return keyword
+    const addAnother = (num1,num2) => num1+num2
+    console.log(addAnother(3,5)); // 8
+
+    // can also be use using patentheses
+    // const addAnother = (num1,num2) => (num1+num2)  () => no need to write return keyword
+    // const addAnother = (num1,num2) => {return num1+num2}   {} => we have to specify return keyword
+
+    // const addAnother = (num1,num2) => ({num1 : "num2"}) // if want to return object enclose it in ()
+
+    ({}) if we write {} enclose it in () so no need to write return keyword
+
+23. Immediately Invoked Function Expression (IIFE)
+
+    // IIFE => is a function which is immedialety invoked after its declaration
+
+    // Syntax is to write function within () followed by ()     eg. ()();
+
+    (function greet(){
+        // Named IIFE
+        console.log("Hello, Welcome here.....");
+    })();
+    // ; is must otherwise will not know to terminate this function and next function will not work
+
+    // Why we use IIFE function => to about pollution cause due to global scope variable
+
+    // can use on arrow functions as well
+    ( () => {
+        console.log(`Database Connected...`);
+    } )();
+
+
+    ( (name) => {
+        console.log(`${name}, welcome !!! `);
+    } )("Om");
+    // we can give arguments also 
+
+24. What is Nullish coalescing Operator ??
+Ans => 
+    let val4 = null ?? 10 ?? 20 // first not null value will be assigned
+
+25. Falsy values and truthy values
+Ans => 
+
+    // false, 0 , -0, BigInt 0n, null, undefined, NaN, "" 
+
+    // truthy vaule
+    // "0", 'false, " ", [], {}, function(){}, 
+
+26. For of loop [array,map]
+
+    Use to iterate on arrays and map 
+    iterate and store the value in array format for key and value [key,value]
+
+    const arr = [1,2,3]
+
+    for (val of arr){
+        // console.log(val);
+    }
+
+27. For in loop [objects,array]
+
+    // Objects are not iterable so instead of for of loop, we use for in loop to access the values   
+    const myObj = {
+        js : "JavaScript",
+        cpp : "C++",
+        py : "Python",
+        html : "Hyper Text Markup Language"
+    }
+
+    for (key in myObj){
+        console.log(`${key} => ${myObj[key]}`);
+    }
+
+    // js => JavaScript
+    // cpp => C++
+    // py => Python
+    // html => Hyper Text Markup Language
+
+    // For in loop cannot be applied to map as it is not iterable
+
+    // Interview Question
+    // Difference between for of and for in loop 
+    // For of loop => Values are given in the iterator
+    // For in loop => Keys are given in the iterator
+
+28. For Each loop [array,arry of object]
+
+    // array.forEach(Callback_Function)
+    // For Each loop needs function inside it to perform task called as callback function => callback functions dont have function name 
+    // Here we are using arrow function as callback function as we dont have to specify function name
+
+    const programming = ["js", "Java", "Python", "CPP", "Ruby"]
+
+    programming.forEach((item,index,arr)=>{ // We not only get just the value we also get index and whole array list
+        console.log(item,index,arr);
+    })
+
+    // js 0 [ 'js', 'Java', 'Python', 'CPP', 'Ruby' ]
+    // Java 1 [ 'js', 'Java', 'Python', 'CPP', 'Ruby' ]
+    // Python 2 [ 'js', 'Java', 'Python', 'CPP', 'Ruby' ]
+    // CPP 3 [ 'js', 'Java', 'Python', 'CPP', 'Ruby' ]
+    // Ruby 4 [ 'js', 'Java', 'Python', 'CPP', 'Ruby' ]
+
+    const coding = [
+        {
+            langName : "JavaScript",
+            fileName : "js"
+        },
+        {
+            langName : "Java",
+            fileName : "java"
+        },
+        {
+            langName : "Python",
+            fileName : "py"
+        },
+    ]
+
+    coding.forEach( (item) => {
+        console.log(item.langName + "=>" + item.fileName);
+    } )
+    // OUTPUT: 
+    // JavaScript=>js
+    // Java=>java
+    // Python=>py
+
+29. Difference between for each and filter
+Ans =>  Difference between for each and filter it that for each will not return a value and filter returns a value
+
+
+30. filter()    map()   reduce()   
+
+        filter() is use to apply conditions on the array element and filter out elements accordingly
+        map() is use to perform Operations on each element and return the operated new element
+        reduce() is use to reduce the whole array into a single value [perform operation till it become single value]
+
+
+    filter:
+        const nums = [1,2,3,4,5,6,7,8,9,10]
+
+        const newNums = nums.filter( (num) => num > 6 )
+        console.log(newNums); // [7, 8, 9, 10 ]  
+
+    map :
+        const nums = [1,2,3,4,5,6,7,8,9,10]
+
+        const newNums = nums.map( (num) => {
+            return num + 10
+        } )
+        // [11,12,13,14,15,16,17,18,19,20]      
+
+    reduce : 
+        /*
+            Syntax
+
+            array.reduce( (accumulator,curerntValue) => () , initialValue  )
+            // for first iteration accumulator has initialValue
+        */
+
+    const myNums = [1, 2, 3]
+
+    const myTotal = myNums.reduce( (acc,currVal) => {
+        console.log(`${acc} is accumulator and ${currVal} is current value`);
+        
+        return acc + currVal
+    } ,0 )
+    console.log(myTotal);
+
+    CHANING for filter(), map() method is also possible
+
+    // ---- CHANING ----
+    //  Chaning the map and filter method => can use multiple map() on an array at once 
+    // second map will perform operation on value given by previous array
+
+    // first map will multiply all values by 10 and then second map will add 1 to each value
+
+    const ans = nums.map( (num) => num*10 ) .map( (num) => num+1 )
+    console.log(ans);
+    // [ 11, 21, 31, 41,  51, 61, 71, 81, 91, 101 ]
+
+    const ans2 = nums.map( (num) => num*10 ) .map( (num) => num+1 ) .filter( (num) => num<50 )
+    console.log(ans2);
+    // [ 11, 21, 31, 41 ]
