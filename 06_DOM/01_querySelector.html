@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+    <title>DOM Learning</title>
+</head>
+<body>
+    <div class="week">
+        Days in Week : 
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+        <div class="day">Friday</div>
+        <div class="day">Saturday</div>
+        <div class="day">Sunday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.week');   // will select div having class week  [return HTML Collection of elements inside]
+    console.log(parent);
+    console.log(parent.children[0]); // Access first element of HTML Collection
+
+    // can use simple for loop on the HTML collection 
+    for (let index = 0; index < parent.children.length; index++) {
+        console.log(parent.children[index].innerHTML);
+    }
+
+    console.log(parent.firstElementChild.innerHTML);  // will return first element from the HTML collection
+    console.log(parent.lastElementChild);   // will return last element from the HTML collection 
+    
+    const dayOne = document.querySelector('.day')
+
+    console.log(dayOne);
+    console.log(dayOne.parentElement);  // Will give parent element of the element specified 
+    console.log(dayOne.nextElementSibling); // will give next sibling of current element here tuesday sibling of monday 
+    
+    console.log("Number of NODES: ",parent.childNodes); // Not only gives the tag elements inside but also the /n [enter press : newline]
+    // Here it has given node list of 15        combining of no of new lines + actual elements which are 7 here
+
+</script>
+</html>

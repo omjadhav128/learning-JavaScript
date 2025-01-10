@@ -1,0 +1,47 @@
+1. Accessing the HTML elements using DOM.
+
+    use document object to access the elements
+    document.getElementById
+    document.getElementByTag
+    document.getElementByClassName
+
+2. Difference between innerIext and textContent
+
+    element.innerIext || element.textContent || element.innerHTML
+
+    innerText = will only give text that is visible on the browser 
+    textContent = will also given that is available but hidden in browser due to display hidden property
+
+    innerHTML= will give the HTML tags written in the element also
+
+3. Query Selector  
+
+    can be used to select id, tag, class from one method itself 
+
+    document.querySelector('h1')
+    document.querySelector('#id')
+    document.querySelector('.class')
+
+4. Query Selector All 
+    will select all the tag matching the classes or tags in the document 
+    it will return node list of the tags 
+    to access this we need to use indexing then only we can access this 
+
+    const element = document.querySelectorAll('h1')
+
+    element[0].style.color = "green"
+
+    NOTE => can use forEach loop to access all the elements in the nodelist 
+
+    element.forEach( function (l) {
+        l.style.backgroudColor = "green"
+    })
+
+
+5. getElementByClassName returns "HTML Collection" and on that we cannot apply for each loop to access the element one by one
+
+    const list = document.getElementByClassName('heading')
+
+    we need to convert it into array first 
+    USE: from() method
+    const newArr = Array.from(list)
