@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Remove Element</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+
+    // simply creating a element 
+    const li = document.createElement('li');
+    console.log(li);
+    li.innerText = "React";
+
+    const ul = document.querySelector('.language');
+
+    console.log(ul);
+    ul.append(li);
+
+    // creating a fnuction to add the element 
+
+    function addLanguage(lang){
+        const li = document.createElement('li')
+
+        li.innerText = lang;
+        const ul = document.querySelector('.language')
+        ul.append(li);
+    }
+
+    addLanguage('SQL');
+
+    // Optimal Approach for add element using function
+    // here we will create text node and append it 
+    // we will not write innerHTML code due to which we dont have to traverse the tree in the backend and save time for bigger task
+
+    function addOptimalLanguage(lang){
+        const li = document.createElement('li');
+
+        li.appendChild(document.createTextNode(lang));
+        document.querySelector('.language').appendChild(li);
+    }
+    addOptimalLanguage('Python');
+    addOptimalLanguage('TypeScript')
+
+    // Edit element
+    const secondLang = document.querySelector('li:nth-child(2)');
+    
+    const newLi = document.createElement('li')
+    newLi.textContent = "Mojo"
+
+    secondLang.replaceWith(newLi);
+
+
+    // Edit Element 
+    const firstElement = document.querySelector('li:first-child')
+    firstElement.outerHTML = "<li>New TypeScript</li>"
+
+    // Remove Element 
+    const lastElement = document.querySelector('li:last-child')
+    lastElement.remove()
+
+    
+</script>
+</html>
