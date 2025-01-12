@@ -1,0 +1,69 @@
+body {
+    background-color: #212121;
+    color : white
+}
+nav{
+    display : flex;
+    padding-left: 20px;
+}
+nav a{
+    float: left;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+    padding: 10px;
+}
+nav a:hover{
+    background: white;
+    color: #212121;
+}
+.container{
+    justify-items: center;   
+}
+span {
+    display: block;
+    font-size :large
+}
+.box-holder{
+    margin: 100px 200px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 50px;
+}
+.box{
+    border : 2px solid white;
+    padding: 40px;
+    border-radius: 15px;
+}
+#Red {
+    background-color: red;
+}
+#Green{
+    background-color: Green;
+}
+#Yellow{
+    background-color: Yellow;
+    color :#212121;
+}
+#Orange{
+    background-color: Orange;
+}
+#Blue{
+    background-color: Blue;
+}
+#White{
+    background-color: White;
+    color: #212121;
+}
+#Purple{
+    background-color: Purple;
+}
+#Grey{
+    background-color: Grey;
+    color: #212121;
+}
