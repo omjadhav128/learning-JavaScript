@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nav Bar to go to home page -->
+    <nav>
+        <h2>Project Arcade</h2>
+        <a href="/07_Project/index.html">HOME</a>
+    </nav>
+
+    <!-- Page Starting -->
+    <div class="container">
+        <h1>Body Mass Index Calculator</h1>
+    </div>
+
+    <!-- Take input {height,weight} -->
+    <form action="" id="inputForm">
+        <table>
+            <tr>
+                <td><label>Enter Height in cm : </label></td>
+                <td><input id="height" type="text"></td>
+            </tr>
+            <tr>
+                <td><label>Enter Weight in kg : </label></td>
+                <td><input id="weight" type="text"></td> 
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" id="submitBTN" value="SUBMIT"></td>
+            </tr>
+        </table>
+
+        <!-- Will Display result here from backend -->
+
+        <div class="result">
+        
+        </div>
+        
+        <!-- Contains values from where we can match and check values -->
+        <div class="resultContainer">
+            <table id="resultTable">
+                <tr>
+                    <th>Category</th>
+                    <th>BMI Range - kg/m<sup>2</sup></th>
+                </tr>
+                <tr>
+                    <td>Underweight (Severe Thiness)</td>
+                    <td> < 16.0 </td>
+                </tr>
+                <tr>
+                    <td>Underweight (Moderate Thiness)</td>
+                    <td> 16.0 - 16.9 </td>
+                </tr>
+                <tr>
+                    <td>Underweight (Mild Thiness)</td>
+                    <td> 17.0 - 18.4 </td>
+                </tr>
+                <tr>
+                    <td>Normal Range</td>
+                    <td> 18.5 - 24.9 </td>
+                </tr>
+                <tr>
+                    <td>Overweight (Pre-obese)</td>
+                    <td> 25.0 - 29.9 </td>
+                </tr>
+                <tr>
+                    <td>Obese (Class I)</td>
+                    <td> 30.0 - 34.9 </td>
+                </tr>
+                <tr>
+                    <td>Obese (Class II)</td>
+                    <td> 35.0 - 39.9 </td>
+                </tr>
+                <tr>
+                    <td>Obese (Class III)</td>
+                    <td> >= 40.0 </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+<script src="app.js"></script>
+</html>

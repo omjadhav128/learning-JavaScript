@@ -1,0 +1,64 @@
+body {
+    background-color: #212121;
+    color : white
+}
+nav{
+    display : flex;
+    padding-left: 20px;
+}
+nav a{
+    float: left;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+    padding: 10px;
+}
+nav a:hover{
+    background: white;
+    color: #212121;
+}
+.container{
+    justify-items: center;
+}
+#inputForm{
+    text-align: center;
+    justify-items: center;
+    font-size: large;
+}
+#height, #weight{
+    width: 100px;
+    border-radius: 3px;
+    border: none;
+    font-size: larger;
+}
+#height, #weight:focus{
+    outline: none;
+}
+#inputForm td{
+    padding: 5px;
+}
+#submitBTN{
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size:medium;
+    margin-top: 10px;
+}
+.result{
+    margin: 20px;
+    font-size: large;
+}
+#resultTable td,th {
+    border: 1px solid white;
+    padding: 6px;
+    border-radius: 2px;
+}
+#resultTable {
+    border: 1px solid white;
+    margin-top: 30px;
+    border-radius: 3px;
+}
