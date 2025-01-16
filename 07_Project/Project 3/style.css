@@ -1,0 +1,36 @@
+body {
+    background-color: #212121;
+    color : white
+}
+nav{
+    display : flex;
+    padding-left: 20px;
+}
+nav a{
+    float: left;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+    padding: 10px;
+}
+nav a:hover{
+    background: white;
+    color: #212121;
+}
+.container{
+    justify-items: center;
+}
+.clock{
+    display: none;
+    margin-top: 100px;
+    font-size: xx-large;
+    padding: 20px 200px;
+    color: #212121;
+    border: 10px solid rgb(19, 14, 14);
+    background-color: whitesmoke;
+    border-radius: 25px;
+}
