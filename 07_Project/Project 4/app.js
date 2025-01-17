@@ -1,44 +1,49 @@
+// 1. Generate a random integer value from 1 to 100
 const actualNumber = Math.floor(((Math.random()*100)+1))
 console.log(actualNumber);
-
 
 const numberForm = document.querySelector('#inputNumber');
 const result = document.querySelector('#res');
 let totalguess = 10;
 let guessNum = document.querySelector('#guessNum');
 
+// Added event listner on form when user submit the form check for the number
 numberForm.addEventListener("submit",startGame);
 
+// 2. Get the input value from the user
 function startGame(event){
     event.preventDefault();
     const userNumber = document.querySelector('#number').value;
+    document.getElementById('number').value = ''
     guessNum.innerText = `Guess Remainig : ${totalguess}`; 
-    validateNumber(userNumber);
-    
+    guessRemaning(userNumber);
 }
 
-function validateNumber(num) {
-           
-    if(num == "" || isNaN(num) || num <=0 || num>100){
-        result.innerText = `Enter Valid Number. Current value : ${num}`;
-    }
-    else{
-        guessRemaning(num);        
-    }
-}
-
+// 3. Check if guesses are remaning or not 
 function guessRemaning(num){
-    totalguess--;
     if(totalguess>0){
-        matchNumber(num)
+        validateNumber(num)
+        totalguess--;
         guessNum.innerText = `Guess Remainig : ${totalguess}`; 
     }
-    else{
+    if(totalguess==0){
         guessNum.innerText = `Guess Remainig : ${totalguess}`; 
         newgame()
     }
 }
 
+// 4. Validate if enter value is an integer or not
+// if invalid inform the user and wait for valid input value
+function validateNumber(num) {    
+    if(num == "" || isNaN(num) || num <=0 || num>100){
+        result.innerText = `Enter Valid Number. Current value : ${num}`;
+    }
+    else{
+        matchNumber(num);        
+    }
+}
+
+// 5. if input is valid check if the number is same as expected or high or low
 function matchNumber(num){
     if (num == actualNumber) {
         result.innerText = `You Won. Correct Number ${num}`
@@ -52,6 +57,8 @@ function matchNumber(num){
     }
 }
 
+
+// give option to start new game is user won or all guesses are finished
 function newgame() {
     let newgame = document.querySelector('.newGame');
     let newBTN = document.createElement('button')
@@ -67,8 +74,6 @@ function newgame() {
     newgame.appendChild(newBTN);
 
     newBTN.addEventListener('click',() => {
-        console.log("dfv");
-        
         submit.disabled = false;
         window.location.reload();
         // guessRemaning = 10;
