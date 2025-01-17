@@ -27,7 +27,8 @@ function guessRemaining(num){
         guessNum.innerText = `Guesses Remaining : ${totalguess}`; 
     }
     if(totalguess==0){
-        guessNum.innerText = `Guesses Remaining : ${totalguess}`; 
+        guessNum.innerText = `Guesses Remaining : ${totalguess}`;
+        result.innerText = `Game Over. Random number was ${actualNumber}` 
         newgame()
     }
 }
