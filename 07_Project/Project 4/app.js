@@ -15,19 +15,19 @@ function startGame(event){
     event.preventDefault();
     const userNumber = document.querySelector('#number').value;
     document.getElementById('number').value = ''
-    guessNum.innerText = `Guess Remainig : ${totalguess}`; 
-    guessRemaning(userNumber);
+    guessNum.innerText = `Guesses Remaining : ${totalguess}`; 
+    guessRemaining(userNumber);
 }
 
 // 3. Check if guesses are remaning or not 
-function guessRemaning(num){
+function guessRemaining(num){
     if(totalguess>0){
         validateNumber(num)
-        totalguess--;
-        guessNum.innerText = `Guess Remainig : ${totalguess}`; 
+        
+        guessNum.innerText = `Guesses Remaining : ${totalguess}`; 
     }
     if(totalguess==0){
-        guessNum.innerText = `Guess Remainig : ${totalguess}`; 
+        guessNum.innerText = `Guesses Remaining : ${totalguess}`; 
         newgame()
     }
 }
@@ -39,6 +39,7 @@ function validateNumber(num) {
         result.innerText = `Enter Valid Number. Current value : ${num}`;
     }
     else{
+        totalguess--;
         matchNumber(num);        
     }
 }
