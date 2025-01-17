@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h2>Project Arcade</h2>
+        <a href="/07_Project/index.html">HOME</a>
+    </nav>
+
+    <!-- To take input values -->
+    <div class="container">
+        <h1>Guess The Number Game</h1>
+        <p>Try guessing the number from 1 to 100. You have 10 Attemps to guess the correct number</p>
+        <form action="" id="inputNumber">
+            <table>
+                <tr>
+                    <td><label for="number">Enter the Number : </label></td>
+                    <td><input type="text" id="number"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" id="submit" value="GUESS">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+         <!-- to show results  -->
+        <div class="resultContainer">
+            <div id="guessNum">Guesses Remaining : 10</div>
+            <div id="res"></div>
+            
+        </div>
+
+        <div class="newGame">
+            
+        </div>
+
+        
+    </div>
+
+   
+</body>
+<script src="app.js"></script>
+</html>

@@ -1,0 +1,55 @@
+body {
+    background-color: #212121;
+    color : white;
+    font-family :'Courier New', Courier, monospace;
+}
+nav{
+    display : flex;
+    padding-left: 20px;
+    font-family: initial;
+}
+nav a{
+    float: left;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+    padding: 10px;
+}
+nav a:hover{
+    background: white;
+    color: #212121;
+}
+.container {
+    justify-items: center;
+}
+#inputNumber {
+    text-align: center;
+}
+#inputNumber td{
+    padding: 6px;
+    font-size: large;
+    
+}
+#number{
+    width: 80px;
+}
+#number:focus{
+    outline: none;
+}
+#submit{
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size:medium;
+}
+.resultContainer{
+    margin-top: 10px;
+    text-align: center;
+}
+#res{
+    margin-top: 10px;
+}
