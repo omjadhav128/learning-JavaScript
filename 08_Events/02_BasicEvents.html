@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event 02</title>
+</head>
+<body style="background-color: #414141; color: white;">
+    
+    <div class="container">
+        <ul id="images"><h3>Images</h3>
+            <li><img src="https://media.cntraveler.com/photos/5e74f9de2e6ca30009d1d4fa/16:9/w_1920,c_limit/Argentina-GettyImages-1146497849.jpg" id="img1" onclick="alert(`First img clicked`)" style="width: 200px;" alt="Image 1"></li>
+            <li><img src="https://media.cntraveler.com/photos/677c03d3056ce575e0ba6cfd/16:9/w_1920%2Cc_limit/Le_Sirenuse_Champagner_Bar-9198.jpg" id="img2" style="width: 200px;" alt="Image 2"></li>
+            <li><img src="https://media.cntraveler.com/photos/6789682a03589bf8161436a5/16:9/w_1920,c_limit/520723810" style="width: 200px;" id="img3" alt="Image 3"></li>
+            <li><img src="https://media.cntraveler.com/photos/6789635e03589bf8161436a3/master/w_1600,c_limit/1821002041" style="width: 200px;" id="img4" alt="Image 4"></li>
+            <li><img src="https://media.cntraveler.com/photos/656e46f2561dba736e8e5cca/16:9/w_1920,c_limit/pexels-toma%CC%81s%CC%8C-mali%CC%81k-3408353.jpg" id="img5" style="width: 200px;" alt="Image 5"></li>
+            <li><img src="https://media.cntraveler.com/photos/64af61570a2887b7eb0c0049/16:9/w_1920%2Cc_limit/E%25CC%2580tretat%2C-Normandy-GettyImages-1473495828.jpg" id="img6" style="width: 200px;" alt="Image 6"></li>
+            <a href="https://www.google.com" style="color: aliceblue;" id="google">Google</a>
+        </ul>
+        
+    </div>
+</body>
+<script>
+
+    // APPLY TRUE on parent node for event propagation , event capturing
+    // document.getElementById('img2').addEventListener('click',function(){
+    //     console.log("img 2 Clicked");
+    // })
+    // document.getElementById('images').addEventListener('click',function(){
+    //     console.log("images ul clicked");
+    // },true)
+
+    document.querySelector('#images').addEventListener('click',function(event){
+        event.preventDefault();
+        // console.log(event.target);             // Will return that node
+        // console.log(event.target.parentNode);  // Will return parent node of the node on which event has occured 
+        let img = event.target.parentNode;
+        // img.remove();      // will remove the elemnt in img i.e parent of target li
+
+        // popular method removeChild() is used but first we have to get its parent node and apply the remove child method to it
+        
+        // Here we are removing IMG tag parent i.e LI but when we click on the LI tag it will remove its parent UL and will remove all 
+        // the images at once  EG: clicking on google it will remove all images as parent of google a tag is ul
+
+        // to avoid this use property tagName and apply condition that if tagName is IMG then only remove it 
+
+        if(event.target.tagName == "IMG"){
+            img.remove();
+        }
+    },false);
+</script>
+</html>
