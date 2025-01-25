@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event 01</title>
+</head>
+<body style="background-color: #414141; color: white;">
+    
+    <div class="container">
+        <ul id="images"><h3>Images</h3>
+            <li><img src="https://media.cntraveler.com/photos/5e74f9de2e6ca30009d1d4fa/16:9/w_1920,c_limit/Argentina-GettyImages-1146497849.jpg" id="img1" onclick="alert(`First img clicked`)" style="width: 200px;" alt="Image 1"></li>
+            <li><img src="https://media.cntraveler.com/photos/677c03d3056ce575e0ba6cfd/16:9/w_1920%2Cc_limit/Le_Sirenuse_Champagner_Bar-9198.jpg" id="img2" style="width: 200px;" alt="Image 2"></li>
+            <li><img src="https://media.cntraveler.com/photos/6789682a03589bf8161436a5/16:9/w_1920,c_limit/520723810" style="width: 200px;" id="img3" alt="Image 3"></li>
+            <li><img src="https://media.cntraveler.com/photos/6789635e03589bf8161436a3/master/w_1600,c_limit/1821002041" style="width: 200px;" id="img4" alt="Image 4"></li>
+            <li><img src="https://media.cntraveler.com/photos/656e46f2561dba736e8e5cca/16:9/w_1920,c_limit/pexels-toma%CC%81s%CC%8C-mali%CC%81k-3408353.jpg" id="img5" style="width: 200px;" alt="Image 5"></li>
+            <li><img src="https://media.cntraveler.com/photos/64af61570a2887b7eb0c0049/16:9/w_1920%2Cc_limit/E%25CC%2580tretat%2C-Normandy-GettyImages-1473495828.jpg" id="img6" style="width: 200px;" alt="Image 6"></li>
+            <a href="https://www.google.com" style="color: aliceblue;" id="google">Google</a>
+        </ul>
+
+    </div>
+</body>
+<!-- 
+In JavaScript event are run sequentialy , there are some exceptions 
+1. Asynchronous programming 
+2. Browser Events : OnCLick , Keypressed 
+
+There are 4 different ways to add event to an element 
+    1. Using onClick Method and setting it as an attribute    // Not scalable
+    2. Using onClick Event in JS file using DOM => provides less functionality 
+    3. Using addEventListener  => MOSTLY PREFERED
+    4. attachEvent() currently not using it 
+
+More about event => type, timestamp, defaultPrevented, 
+target, toElement, srcElement, currentTarget
+ClientX, ClientY, screenX, screenY
+altKey, crtlkey, shiftKey, KeyCode
+    
+-->
+<script>
+
+    document.getElementById('img2').onclick = function() {
+        console.log("img 2 Clicked")
+    }
+    // onclick does not provide more information as event listeners do => Provides less features 
+    // event listener gives event object that contains various information about that event 
+
+    document.getElementById('img3').addEventListener('click',function() {
+        console.log(`img 3 clicked`)
+    },false)
+    // OUTPUT:
+    // img 3 clicked
+    // images ul clicked 
+
+    document.getElementById('img4').addEventListener('click',function() {
+        console.log(`img 4 clicked`)
+    },true)
+    // OUTPUT
+    // 
+
+    // The 3rd parameter by default is false
+    // 3rd para use for event propagation (Event progagation are of two type)
+    // 1. Event Bubbling (False) - Default => Events are performed from bottom to up in DOM tree {inner elements first then outer}
+    // 2. Event Capturing (True) => Events are performed from top to bottom (Outside elements first then inner elements)
+
+    // Eg : False => Bubbling    -- work like bubble, event from down to up
+    // Def => Event bubbling is a type of DOM event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors (parents) of the target element in the same nesting hierarchy till it reaches the outermost DOM element or document object
+
+    // <ul>                                 -- Event on ul click
+    //      <li><img></li>                  -- Event on img click
+    // </ul>
+
+    // First event will performed on click inside img then on ul 
+    // Will execute function of event on img first then function of event on ul
+    // false => inside to outside 
+    
+
+    // Eg : True => Capturing 
+    // <ul>                                 -- Event on ul click
+    //      <li><img></li>                  -- Event on img click
+    // </ul>
+
+    // First event will performed on click on ul then on img 
+    // Will execute function of event on ul first then function of event on img
+    // true => outside to inside -- will perform event function of outside element first then insideS
+    
+    
+    // can use event.stopPropagation()  to stop the bubbling of the event only innner most will work 
+    // event.preventDefault() => will not redirect to next link and will keep the value/parameter to itself 
+
+    document.getElementById('images').addEventListener('click',function(){
+        console.log("images ul clicked");
+    })
+
+    document.getElementById('google').addEventListener('click',function(event) {
+        event.preventDefault();   // Will not redirect to new page
+        event.stopPropagation();  // will only work for current element event not for any parent
+        console.log("google link clicked");
+        
+    })
+
+
+
+</script>
+</html>
