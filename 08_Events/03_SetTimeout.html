@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Timeout Method</title>
+</head>
+<body>
+    <h1>HTML</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+
+    // JavaScript code will run synchronously by default it will wait for first operation to complete then only will run next operation 
+
+    // JavaScript is a synchronous and single threaded programming language.
+
+    let stop = document.querySelector('#stop');
+    let h1 = document.querySelector('h1');
+
+    console.log("1");
+    
+    // setTimeout => is an function of asynchronous programming and it will not stop the execution of the other code.
+
+    // Here after 2 seconds the HTML text will change to JavaScript
+    const changeTitle = setTimeout(function(){
+        h1.innerHTML = "JavaScript";
+        console.log("2");
+        
+    },2000)
+    
+    console.log("3")
+
+    // Difference between setInterval and SetTimeout
+    // setInterval = Will execute the function everytime after perticular time period
+    // setTimeout = will execute the function once after the time period has completed.
+    
+    // SetTimeout will put the funtion in a wait queue and will execute after specific time 
+
+    // If we want we can remove the function from the wait queue and cancel the operation use => clearTimeout(ref of timeout)
+
+    stop.addEventListener('click',function(){
+        console.log("Stopped");
+        clearTimeout(changeTitle);        
+    },false)
+
+    // When click on the stop will it will clear the timeout and will not change the Title 
+
+    // Using arrow function 
+    // const changeTitle = setTimeout(()=>{
+    //     h1.innerHTML = "JavaScript";
+    // },3000)
+
+</script>
+</html>
