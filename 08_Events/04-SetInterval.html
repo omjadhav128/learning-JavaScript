@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval Method</title>
+</head>
+<body>
+    <h1>JavaScript Asynchronous Code</h1>
+    <h3>count here : 0</h3>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+    <button id="restart">RESTART</button>
+</body>
+<script>
+    let h3 = document.querySelector('h3');
+    let count = 1;
+    let interval;
+    // declaring interval and count as global to access it inside different functions 
+    
+    // Adding click event on the button and calling respective function inside it 
+    document.querySelector("#start").addEventListener('click',()=>{
+        startEvent();
+    },false);
+
+    document.querySelector("#stop").addEventListener('click',()=>{
+        endEvent();        
+    },false);
+
+    document.querySelector("#restart").addEventListener('click',()=>{
+        count = 1;
+    })
+
+    function startEvent(){
+        interval  = setInterval(()=>{
+            h3.innerHTML = `count here : ${count}`; 
+            count++;
+        },1000)
+    }
+
+    // setInterval has 3 parameters setInterval(funtion/handler,time_interval,parameters);
+    
+    function endEvent(){
+        clearInterval(interval);
+    }
+</script>
+</html>
