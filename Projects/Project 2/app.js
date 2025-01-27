@@ -22,5 +22,4 @@ function calculateBMI(event){
         const bmi = (weight / ((height * height) / 10000)).toFixed(2);
         result.innerHTML = `<span>BMI Score : ${bmi}</span>`
     }
-
 }
