@@ -35,5 +35,4 @@ function changeColor(e) {
     if(e.target.id == "Grey"){
         body.style.backgroundColor = e.target.id;
     }
-    
 }
