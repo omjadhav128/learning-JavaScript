@@ -80,7 +80,6 @@ function newgame() {
         window.location.reload();
         // guessRemaning = 10;
     })
-
 }
 
 
