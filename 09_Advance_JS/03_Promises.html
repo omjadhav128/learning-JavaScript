@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises in JS</title>
+</head>
+
+<body>
+
+    <p>
+        Promise object is used to handle asynchronous events in javascript <br>
+        it waits for the task to complete and returs the result according to it <br>
+        Pormise Object => represents the eventual completion (or failure) of an asynchronous operation and its resulting
+        value <br><br>
+
+        it will either be completed i.e resolve or it will no complete successfully i.e reject <br><br>
+
+        Promises are handled in 2 ways <br>
+        1. using .then() and .cath() .finally() functions <br>
+        2. Async-await functions<br><br><br>
+
+    </p>
+    <h1>User Info</h1>
+</body>
+<script>
+
+    // Method 1 : Create a new Promise and call fetch inside it 
+
+    const requestURL = "https://api.github.com/users/omjadhav128"
+    div = document.createElement('div');
+
+    const getInfo = new Promise(function (resolve, reject) {
+        const response = fetch(requestURL)   // calling fetch
+        resolve(response)    // after calling and getting the response will call the next resolve .then() function
+    });
+
+    getInfo.then(function (response) {        
+        return (response.json()); // cannot use the string data to convert we have to wait till it is converted to JSON
+        // after successful conversion call the next .then() and then use the response values 
+    }).then(function (data) {
+        
+        // get the json object in data and use it to access the values
+        // console.log(data);
+        div.innerHTML = `
+        <img src="${data.avatar_url}" width=100 border='2px solid black'> <br>
+        Name = ${data.name} <br>
+        UserName = ${data.twitter_username} <br>
+        `
+        document.body.append(div);
+    }).catch((error) => {
+        // if due to any error the data was not successfully fetch handle it here
+        div.innerHTML = `
+        <p>Error : ${error}<p>
+        `
+        document.body.append(div);
+    })
+
+    /*  GPT CODE :
+            const requestURL = "https://api.github.com/users/omjadhav128";
+            const div = document.createElement('div');
+        
+            const getInfo = new Promise((resolve, reject) => {
+                fetch(requestURL)
+                    .then(response => resolve(response))
+                    .catch(error => reject(error));
+            });
+        
+            getInfo.then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    div.innerHTML = `
+                    <img src="${data.avatar_url}" width=100 border='2px solid black'><br>
+                    Name: ${data.name}<br>
+                    Username: ${data.twitter_username}<br>
+                `;
+                    document.body.append(div);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    div.innerHTML = `<p>Error: ${error.message}</p>`;
+                    document.body.append(div);
+                });
+    */
+
+    // Method 2 : directly call the fetch method
+    fetch(requestURL).then(function(response){
+        return response.json()
+    }).then((data)=>{
+        console.log(data.twitter_username);
+    })
+
+    // Method 3 : Async Function Await keyword
+
+    // cannot execute now as response object has be used already
+    // ERROR : TypeError while working with a JavaScript Promise. This error happens because the body stream of the Response object has already been read, which means it can't be read again
+
+    // async function getData(){
+    //     try {
+    //         const response = await getInfo;
+    //         console.log(response);
+    //         const data = await response.json()
+    //         console.log(data);
+    //         console.log(data.twitter_username);
+            
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+
+    // getData()
+// NOTE : if want to read the response object by converting it into JSON twice the you have to clone it first 
+
+</script>
+
+</html>
