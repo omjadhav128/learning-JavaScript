@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body style="background-color: #212121;">
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            document
+                .querySelector('button')
+                .addEventListener("click",this.handelClick.bind(this))
+                // Before .bind() not able to access this.server  <this was pointing to current instance which has called i.e. button >
+                // after .bind() will bind the current refrence with the object calling and it will not overwrite it 
+                // Here handelClick will pass its current refrence as well as the variable and properties with the function
+        }
+        handelClick(){
+            console.log("Button Clicked");
+            console.log(this.server);
+            // Button Clicked
+            // https://localhost:300
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
