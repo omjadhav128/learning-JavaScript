@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+
+    // function clickHandler(color){
+    //     document.body.style.backgroundColor = color;
+    // }
+
+    // document.getElementById('orange').onclick = clickHandler('orange')
+    // document.getElementById('green').onclick = clickHandler('green')
+
+    //  This will call the function directly and set color to green
+
+    function clickHandler(color){
+        return function () {
+            document.body.style.backgroundColor = color;
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler('orange')
+    document.getElementById('green').onclick = clickHandler('green')
+
+/* 
+Step-by-Step Explanation:
+Define the clickHandler Function:
+
+javascript
+    function clickHandler(color) {
+        return function() {
+            document.body.style.backgroundColor = color;
+        }
+    }
+The function clickHandler takes a parameter color.
+
+It returns another function (an anonymous function) that, when called, changes the background color of the document body to the specified color.
+
+This is an example of a higher-order function: a function that returns another function.
+
+Assigning Event Handlers:
+
+javascript
+    document.getElementById('orange').onclick = clickHandler('orange');
+    document.getElementById('green').onclick = clickHandler('green');
+
+Here, we are setting the onclick event handler of the elements with IDs orange and green.
+
+Instead of calling clickHandler immediately, we're passing the returned function as the event handler.
+
+clickHandler('orange') returns function() { document.body.style.backgroundColor = 'orange'; }.
+
+Now, when the user clicks the button with the ID orange, this returned function is executed, changing the background color to orange.
+
+Why This Approach Works:
+Deferred Execution: By returning a function, we ensure that the code to change the background color only runs when the button is clicked, not when the script is first loaded.
+
+Function Closure: The returned function retains access to the color parameter, thanks to JavaScript's closure feature. This means that even though color is defined in the outer function (clickHandler), the returned function can still access it when it's executed later.
+
+Code Reusability: This approach allows the clickHandler function to be reused for any number of color-changing buttons, keeping the code DRY (Don't Repeat Yourself).
+*/
+
+// NOTE => 
+/*
+Here's why it executed immediately:
+
+When you write clickHandler('orange'), you're calling the clickHandler function right away.
+
+This means document.body.style.backgroundColor = color; is executed immediately, and the function returns undefined.
+
+The undefined is then assigned to document.getElementById('orange').onclick, which is not what you want.
+
+In the corrected code, we return a function without executing it right away. Instead, we provide a reference to the anonymous function that will be executed later, when the button is clicked:
+
+
+
+Here's why it does not execute immediately in the corrected code:
+
+clickHandler('orange') returns a new function: function() { document.body.style.backgroundColor = 'orange'; }.
+
+This new function is then assigned as the onclick handler for the button.
+
+The new function will only be executed when the button is actually clicked, not when the script is loaded.
+*/
+
+</script>
+</html>
